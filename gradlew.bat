@@ -29,6 +29,9 @@ if "%DIRNAME%" == "" set DIRNAME=.
 set APP_BASE_NAME=%~n0
 set APP_HOME=%DIRNAME%
 
+@rem Persistent Gradle cache (wrapper dists, dependency cache). Override with your own GRADLE_USER_HOME.
+if not defined GRADLE_USER_HOME set "GRADLE_USER_HOME=D:\app\gradle-home"
+
 @rem Resolve any "." and ".." in APP_HOME to make it shorter.
 for %%i in ("%APP_HOME%") do set APP_HOME=%%~fi
 

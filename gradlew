@@ -40,6 +40,12 @@ cd "`dirname \"$PRG\"`/" >/dev/null
 APP_HOME="`pwd -P`"
 cd "$SAVED" >/dev/null
 
+# Persistent Gradle cache (wrapper dists, dependency cache). Override with your own GRADLE_USER_HOME.
+if [ -z "$GRADLE_USER_HOME" ] ; then
+    GRADLE_USER_HOME="D:/app/gradle-home"
+fi
+export GRADLE_USER_HOME
+
 APP_NAME="Gradle"
 APP_BASE_NAME=`basename "$0"`
 

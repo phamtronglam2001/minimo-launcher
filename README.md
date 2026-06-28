@@ -33,20 +33,13 @@ Added under **Minimo Settings → Customisation**:
 Use the **`foss`** flavor — no Google Play billing or in-app review libraries:
 
 ```powershell
-cd minimo-launcher
-.\gradlew.bat assembleFossDebug
-```
-
-APK output:
-
-```
-app/build/outputs/apk/foss/debug/app-foss-debug.apk
-```
-
-Release build:
-
-```powershell
 .\gradlew.bat assembleFossRelease
+```
+
+APK output (signed release, arm64, ~3 MB):
+
+```
+app/build/outputs/apk/foss/release/app-foss-arm64-v8a-release.apk
 ```
 
 ### Environment (Windows)
@@ -56,9 +49,13 @@ Set these user environment variables, then restart the terminal:
 | Variable | Example |
 |----------|---------|
 | `JAVA_HOME` | `D:\app\android-flutter-sdk\jdk17` |
+| `GRADLE_USER_HOME` | `D:\app\gradle-home` (optional; `gradlew.bat` / `gradlew` set this if unset) |
 | `ANDROID_HOME` | `D:\app\android-flutter-sdk\android-sdk` |
 
 Add `%JAVA_HOME%\bin` to `PATH`. Gradle creates `local.properties` automatically if missing (not committed).
+
+Gradle wrapper distributions and caches live under `%GRADLE_USER_HOME%` (default in scripts: `D:\app\gradle-home`), so builds do not re-download Gradle on every run.
+
 
 ## Tech stack
 
