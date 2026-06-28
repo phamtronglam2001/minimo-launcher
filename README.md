@@ -65,4 +65,6 @@ Gradle wrapper distributions and caches live under `%GRADLE_USER_HOME%` (default
 
 ## License
 
-Same license as upstream. See upstream repository for original authorship and terms.
+This project is licensed under the [MIT License](LICENSE).
+
+Original software is [Minimo Launcher](https://github.com/VaibhavLakhera/minimo-launcher) by Vaibhav Lakhera (Copyright (c) 2024). This fork is a personal learning project and remains under the same MIT terms.
