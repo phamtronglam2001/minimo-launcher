@@ -78,6 +78,9 @@
     <string name="apply_the_home_app_size_to_all_apps_in_the_app_drawer">Apply the home app size to all apps in the app drawer</string>
     <string name="black_theme">Black Theme</string>
     <string name="set_wallpaper_to_theme_color">Set Wallpaper to Theme Colour</string>
+    <string name="true_black_all_screens">True Black All Screens</string>
+    <string name="true_black_all_screens_subtitle">Set home, lock screen, and standby wallpapers to pure black and enable Black Theme</string>
+    <string name="true_black_all_screens_dialog_message">Are you sure you want to enable this? Your home screen, lock screen, and standby (always-on display) wallpapers will be set to pure black (#000000), and Black Theme will be enabled.</string>
     <string name="applied_only_when_the_app_theme_is_in_dark_mode">Applied only when the app theme is in dark mode</string>
     <string name="auto_open_app">Auto Open App</string>
     <string name="automatically_open_the_app_if_it_is_the_only_search_result">Automatically open the app if it is the only search result</string>

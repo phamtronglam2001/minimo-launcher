@@ -28,6 +28,8 @@ class PreferenceHelper @Inject constructor(
         private val KEY_THEME_MODE = stringPreferencesKey("KEY_THEME_MODE")
         private val KEY_SET_WALLPAPER_TO_THEME_COLOR =
             booleanPreferencesKey("KEY_SET_WALLPAPER_TO_THEME_COLOR")
+        private val KEY_TRUE_BLACK_ALL_SCREENS =
+            booleanPreferencesKey("KEY_TRUE_BLACK_ALL_SCREENS")
         private val KEY_ENABLE_WALLPAPER = booleanPreferencesKey("KEY_ENABLE_WALLPAPER")
         private val KEY_LIGHT_TEXT_ON_WALLPAPER =
             booleanPreferencesKey("KEY_LIGHT_TEXT_ON_WALLPAPER")
@@ -204,6 +206,12 @@ class PreferenceHelper @Inject constructor(
         }
     }
 
+    suspend fun setTrueBlackAllScreens(enable: Boolean) {
+        preferences.edit {
+            it[KEY_TRUE_BLACK_ALL_SCREENS] = enable
+        }
+    }
+
     suspend fun setEnableWallpaper(enable: Boolean) {
         preferences.edit {
             it[KEY_ENABLE_WALLPAPER] = enable
@@ -337,6 +345,7 @@ class PreferenceHelper @Inject constructor(
                 dynamicTheme = prefs[KEY_DYNAMIC_THEME] ?: false,
                 blackTheme = getBlackThemeFromPref(prefs[KEY_BLACK_THEME], prefs[KEY_THEME_MODE]),
                 setWallpaperToThemeColor = prefs[KEY_SET_WALLPAPER_TO_THEME_COLOR] ?: false,
+                trueBlackAllScreens = prefs[KEY_TRUE_BLACK_ALL_SCREENS] ?: false,
                 enableWallpaper = prefs[KEY_ENABLE_WALLPAPER] ?: false,
                 lightTextOnWallpaper = prefs[KEY_LIGHT_TEXT_ON_WALLPAPER] ?: true
             )
@@ -405,6 +414,7 @@ class PreferenceHelper @Inject constructor(
                 applyHomeAppSizeToAllApps = prefs[KEY_APPLY_HOME_APP_SIZE_TO_ALL_APPS] ?: false,
                 blackTheme = getBlackThemeFromPref(prefs[KEY_BLACK_THEME], prefs[KEY_THEME_MODE]),
                 setWallpaperToThemeColor = prefs[KEY_SET_WALLPAPER_TO_THEME_COLOR] ?: false,
+                trueBlackAllScreens = prefs[KEY_TRUE_BLACK_ALL_SCREENS] ?: false,
                 enableWallpaper = prefs[KEY_ENABLE_WALLPAPER] ?: false,
                 lightTextOnWallpaper = prefs[KEY_LIGHT_TEXT_ON_WALLPAPER] ?: true,
                 dimWallpaper = prefs[KEY_DIM_WALLPAPER] ?: false,

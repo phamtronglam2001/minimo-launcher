@@ -52,6 +52,7 @@ class CustomisationViewModel @Inject constructor(
                             applyHomeAppSizeToAllApps = prefs.applyHomeAppSizeToAllApps,
                             blackTheme = prefs.blackTheme,
                             setWallpaperToThemeColor = prefs.setWallpaperToThemeColor,
+                            trueBlackAllScreens = prefs.trueBlackAllScreens,
                             enableWallpaper = prefs.enableWallpaper,
                             lightTextOnWallpaper = prefs.lightTextOnWallpaper,
                             dimWallpaper = prefs.dimWallpaper,
@@ -223,6 +224,16 @@ class CustomisationViewModel @Inject constructor(
     fun onToggleSetWallpaperToThemeColor() {
         viewModelScope.launch {
             preferenceHelper.setSetWallpaperToThemeColor(_state.value.setWallpaperToThemeColor.not())
+        }
+    }
+
+    fun onToggleTrueBlackAllScreens() {
+        viewModelScope.launch {
+            val enable = _state.value.trueBlackAllScreens.not()
+            preferenceHelper.setTrueBlackAllScreens(enable)
+            if (enable) {
+                preferenceHelper.setBlackTheme(true)
+            }
         }
     }
 

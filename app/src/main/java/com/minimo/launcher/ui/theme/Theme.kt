@@ -1,7 +1,6 @@
 package com.minimo.launcher.ui.theme
 
 import android.app.Activity
-import android.app.WallpaperManager
 import android.content.Context
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.ColorScheme
@@ -17,13 +16,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
-import androidx.core.graphics.createBitmap
 import androidx.core.graphics.drawable.toDrawable
-import androidx.core.graphics.set
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import com.minimo.launcher.utils.AndroidUtils
+import com.minimo.launcher.utils.WallpaperUtils
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -43,6 +41,7 @@ fun AppTheme(
     useDynamicTheme: Boolean,
     statusBarVisible: Boolean,
     setWallpaperToThemeColor: Boolean,
+    trueBlackAllScreens: Boolean,
     enableWallpaper: Boolean,
     isHomeScreen: Boolean,
     lightTextOnWallpaper: Boolean,
@@ -127,7 +126,13 @@ fun AppTheme(
         }
     }
 
-    if (setWallpaperToThemeColor) {
+    if (trueBlackAllScreens) {
+        LaunchedEffect(trueBlackAllScreens) {
+            withContext(Dispatchers.IO) {
+                WallpaperUtils.setTrueBlackWallpaper(context)
+            }
+        }
+    } else if (setWallpaperToThemeColor) {
         // Only run when the background color changes, and execute setting the wallpaper on the IO thread.
         LaunchedEffect(colorScheme.surface) {
             withContext(Dispatchers.IO) {
@@ -144,14 +149,5 @@ fun AppTheme(
 }
 
 private fun updateWallpaper(context: Context, color: Color) {
-    try {
-        val wallpaperManager = WallpaperManager.getInstance(context)
-
-        val bitmap = createBitmap(1, 1)
-        bitmap[0, 0] = color.toArgb()
-
-        wallpaperManager.setBitmap(bitmap)
-    } catch (e: Exception) {
-        e.printStackTrace()
-    }
+    WallpaperUtils.setSolidColorWallpaper(context, color.toArgb())
 }

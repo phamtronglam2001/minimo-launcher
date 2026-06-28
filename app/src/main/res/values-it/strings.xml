@@ -80,6 +80,9 @@
     <string name="apply_the_home_app_size_to_all_apps_in_the_app_drawer">Applica la dimensione delle app della home a tutte le app nel drawer</string>
     <string name="black_theme">Tema nero</string>
     <string name="set_wallpaper_to_theme_color">Imposta sfondo al colore del tema</string>
+    <string name="true_black_all_screens">Nero puro su tutti gli schermi</string>
+    <string name="true_black_all_screens_subtitle">Imposta gli sfondi di home, blocco schermo e standby su nero puro e abilita il Tema nero</string>
+    <string name="true_black_all_screens_dialog_message">Sei sicuro di voler abilitare questa opzione? Gli sfondi della home, del blocco schermo e dello standby (always-on display) verranno impostati su nero puro (#000000) e il Tema nero verrà abilitato.</string>
     <string name="applied_only_when_the_app_theme_is_in_dark_mode">Applicato solo quando il tema dell\'app è in modalità scura</string>
     <string name="auto_open_app">Apertura automatica app</string>
     <string name="automatically_open_the_app_if_it_is_the_only_search_result">Apri automaticamente l\'app se è l\'unico risultato di ricerca</string>

@@ -52,6 +52,7 @@ class MainActivity : ComponentActivity() {
                 useDynamicTheme = state.useDynamicTheme,
                 blackTheme = state.blackTheme,
                 setWallpaperToThemeColor = state.setWallpaperToThemeColor,
+                trueBlackAllScreens = state.trueBlackAllScreens,
                 enableWallpaper = state.enableWallpaper,
                 isHomeScreen = isHomeScreen,
                 lightTextOnWallpaper = state.lightTextOnWallpaper,

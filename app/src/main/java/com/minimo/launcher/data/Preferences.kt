@@ -15,6 +15,7 @@ data class MainPreferences(
     val dynamicTheme: Boolean = false,
     val blackTheme: Boolean = false,
     val setWallpaperToThemeColor: Boolean = false,
+    val trueBlackAllScreens: Boolean = false,
     val enableWallpaper: Boolean = false,
     val lightTextOnWallpaper: Boolean = true
 )
@@ -73,6 +74,7 @@ data class CustomisationPreferences(
     val applyHomeAppSizeToAllApps: Boolean = false,
     val blackTheme: Boolean = false,
     val setWallpaperToThemeColor: Boolean = false,
+    val trueBlackAllScreens: Boolean = false,
     val enableWallpaper: Boolean = false,
     val lightTextOnWallpaper: Boolean = true,
     val dimWallpaper: Boolean = false,

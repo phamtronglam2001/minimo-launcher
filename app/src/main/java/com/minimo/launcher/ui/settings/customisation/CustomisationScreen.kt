@@ -64,6 +64,7 @@ import com.minimo.launcher.ui.settings.customisation.components.EnableAccessibil
 import com.minimo.launcher.ui.settings.customisation.components.EnableAppUsageDialog
 import com.minimo.launcher.ui.settings.customisation.components.EnableNotificationsDialog
 import com.minimo.launcher.ui.settings.customisation.components.EnableSetWallpaperToThemeColorDialog
+import com.minimo.launcher.ui.settings.customisation.components.EnableTrueBlackAllScreensDialog
 import com.minimo.launcher.ui.settings.customisation.components.FontDropdown
 import com.minimo.launcher.ui.settings.customisation.components.IgnoreSpecialCharacters
 import com.minimo.launcher.ui.settings.customisation.components.MinimoSettingsPositionDropdown
@@ -102,6 +103,7 @@ fun CustomisationScreen(
     var showEnableNotificationPermissionDialog by remember { mutableStateOf(false) }
     var showEnableAppUsagePermissionDialog by remember { mutableStateOf(false) }
     var showSetWallpaperToThemeColorDialog by remember { mutableStateOf(false) }
+    var showTrueBlackAllScreensDialog by remember { mutableStateOf(false) }
 
     var showClockAppPicker by remember { mutableStateOf(false) }
     var showBatteryAppPicker by remember { mutableStateOf(false) }
@@ -248,6 +250,19 @@ fun CustomisationScreen(
                         viewModel.onToggleSetWallpaperToThemeColor()
                     } else {
                         showSetWallpaperToThemeColorDialog = true
+                    }
+                }
+            )
+
+            ToggleItem(
+                title = stringResource(R.string.true_black_all_screens),
+                subtitle = stringResource(R.string.true_black_all_screens_subtitle),
+                isChecked = state.trueBlackAllScreens,
+                onToggleClick = {
+                    if (state.trueBlackAllScreens) {
+                        viewModel.onToggleTrueBlackAllScreens()
+                    } else {
+                        showTrueBlackAllScreensDialog = true
                     }
                 }
             )
@@ -688,6 +703,18 @@ fun CustomisationScreen(
                 },
                 onDismiss = {
                     showSetWallpaperToThemeColorDialog = false
+                }
+            )
+        }
+
+        if (showTrueBlackAllScreensDialog) {
+            EnableTrueBlackAllScreensDialog(
+                onConfirm = {
+                    viewModel.onToggleTrueBlackAllScreens()
+                    showTrueBlackAllScreensDialog = false
+                },
+                onDismiss = {
+                    showTrueBlackAllScreensDialog = false
                 }
             )
         }

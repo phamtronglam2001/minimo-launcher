@@ -80,6 +80,9 @@
     <string name="apply_the_home_app_size_to_all_apps_in_the_app_drawer">Die Größe der Start-Apps auf alle Apps in der App-Schublade anwenden</string>
     <string name="black_theme">Schwarzes Design</string>
     <string name="set_wallpaper_to_theme_color">Hintergrundbild auf Designfarbe setzen</string>
+    <string name="true_black_all_screens">Reines Schwarz auf allen Bildschirmen</string>
+    <string name="true_black_all_screens_subtitle">Start-, Sperr- und Standby-Hintergrundbilder auf reines Schwarz setzen und Schwarzes Design aktivieren</string>
+    <string name="true_black_all_screens_dialog_message">Sind Sie sicher, dass Sie dies aktivieren möchten? Ihre Start-, Sperr- und Standby-Hintergrundbilder (Always-on-Display) werden auf reines Schwarz (#000000) gesetzt und das Schwarze Design wird aktiviert.</string>
     <string name="applied_only_when_the_app_theme_is_in_dark_mode">Wird nur angewendet, wenn das App-Design im Dunkelmodus ist</string>
     <string name="auto_open_app">App automatisch öffnen</string>
     <string name="automatically_open_the_app_if_it_is_the_only_search_result">App automatisch öffnen, wenn sie das einzige Suchergebnis ist</string>

@@ -1,62 +1,71 @@
-# Minimo
+# Minimo Launcher (Learning Fork)
 
-Designed for users who want to de-clutter their home screen, Minimo offers a clean and intuitive
-interface that prioritizes functionality without unnecessary distractions.
+This repository is a **personal fork** of [Minimo Launcher](https://github.com/VaibhavLakhera/minimo-launcher) by Vaibhav Lakhera. It is kept for learning Android/Kotlin development, not as an official continuation of the upstream project.
 
-No icons. No distractions.
+Upstream project: minimal text-based Android launcher — no icons, focused on simplicity.
 
-## Screenshots:
+## What changed in this fork
 
-<p align="center">
-  <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/01.png" alt="Screenshot 1" width="28%" />
-  <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/02.png" alt="Screenshot 2" width="28%" />
-  <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/03.png" alt="Screenshot 3" width="28%" />
-</p>
+### True Black All Screens
 
-<p align="center">
-  <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/04.png" alt="Screenshot 4" width="28%" />
-  <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/05.png" alt="Screenshot 5" width="28%" />
-  <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/06.png" alt="Screenshot 6" width="28%" />
-</p>
+Added under **Minimo Settings → Customisation**:
 
-## Key Features:
+- Sets **home** and **lock screen** wallpapers to pure black (`#000000`)
+- Attempts both `FLAG_SYSTEM` and `FLAG_LOCK` via `WallpaperManager`
+- Optionally enables **Black Theme** when turned on
+- Uses a confirmation dialog before applying
 
-- **App Management**: Personalize your app experience by favourite apps, renaming apps and hiding
-  those you don’t use frequently, keeping your home screen tidy and organized.
-- **Lightweight Performance**: Minimo is designed to be resource-efficient, ensuring smooth
-  operation without draining your battery.
-- **Privacy Focused**: Your data is yours. We don’t track or collect personal information.
-- **Open Source**: Our app is open source, allowing you to review the code, contribute, and ensure
-  transparency in our development process.
+**Files touched (good starting points for reading the codebase):**
 
-## Download:
+| Layer | File |
+|-------|------|
+| UI toggle + dialog | `app/src/main/java/.../customisation/CustomisationScreen.kt` |
+| Click handler | `app/src/main/java/.../customisation/CustomisationViewModel.kt` |
+| Saved preference | `app/src/main/java/.../data/PreferenceHelper.kt` |
+| Apply on startup | `app/src/main/java/.../ui/theme/Theme.kt` |
+| OS wallpaper call | `app/src/main/java/com/minimo/launcher/utils/WallpaperUtils.kt` |
+| Strings | `app/src/main/res/values/strings.xml` |
 
-[<img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
-alt="Get it on Google Play"
-height="80">](https://play.google.com/store/apps/details?id=com.minimo.launcher)
-[<img src="https://gitlab.com/IzzyOnDroid/repo/-/raw/master/assets/IzzyOnDroid.png"
-alt="Get it on IzzyOnDroid"
-height="80">](https://apt.izzysoft.de/fdroid/index/apk/com.minimo.launcher)
+**Note:** Always-on display / standby wallpaper is controlled by the device OEM; Android has no public API to set it directly.
 
-## Tech stack & Libraries
+### Build flavor
 
-- Minimum SDK level 26.
-- Target SDK level 35.
-- [Kotlin](https://kotlinlang.org/) based,
-  utilizing [Coroutines](https://github.com/Kotlin/kotlinx.coroutines) + [Flow](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/)
-  for asynchronous operations.
-- Jetpack Libraries:
-  - [Jetpack Compose](https://developer.android.com/compose)
-  - [Lifecycle](https://developer.android.com/jetpack/androidx/releases/lifecycle)
-  - [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel)
-  - [Navigation](https://developer.android.com/guide/navigation)
-  - [Room](https://developer.android.com/jetpack/androidx/releases/room)
-  - [DataStore](https://developer.android.com/jetpack/androidx/releases/datastore)
-  - [Hilt](https://dagger.dev/hilt/)
-- [Timber](https://github.com/JakeWharton/timber)
+Use the **`foss`** flavor — no Google Play billing or in-app review libraries:
 
-## Socials:
+```powershell
+cd minimo-launcher
+.\gradlew.bat assembleFossDebug
+```
 
-- [Join Discord Channel](https://discord.gg/f4wpPppCDk)
-- [X/Twitter](https://x.com/VaibhavLakhera)
-- [LinkedIn](https://www.linkedin.com/in/vaibhav-lakhera/)
+APK output:
+
+```
+app/build/outputs/apk/foss/debug/app-foss-debug.apk
+```
+
+Release build:
+
+```powershell
+.\gradlew.bat assembleFossRelease
+```
+
+### Environment (Windows)
+
+Set these user environment variables, then restart the terminal:
+
+| Variable | Example |
+|----------|---------|
+| `JAVA_HOME` | `D:\app\android-flutter-sdk\jdk17` |
+| `ANDROID_HOME` | `D:\app\android-flutter-sdk\android-sdk` |
+
+Add `%JAVA_HOME%\bin` to `PATH`. Gradle creates `local.properties` automatically if missing (not committed).
+
+## Tech stack
+
+- Kotlin, Jetpack Compose, MVVM
+- Room (app database), DataStore (settings), Hilt (dependency injection)
+- Min SDK 26, target SDK 36
+
+## License
+
+Same license as upstream. See upstream repository for original authorship and terms.

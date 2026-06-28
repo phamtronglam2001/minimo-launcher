@@ -33,6 +33,7 @@ class MainViewModel @Inject constructor(
                             useDynamicTheme = prefs.dynamicTheme,
                             blackTheme = prefs.blackTheme,
                             setWallpaperToThemeColor = prefs.setWallpaperToThemeColor,
+                            trueBlackAllScreens = prefs.trueBlackAllScreens,
                             enableWallpaper = prefs.enableWallpaper,
                             lightTextOnWallpaper = prefs.lightTextOnWallpaper
                         )
